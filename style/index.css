@@ -1,0 +1,21 @@
+body {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+}
+
+a {
+   width: 100%;
+   color: #fff;
+}
+
+.btn {
+   border: 2px solid #fff;
+   margin: 2rem;
+}
+
+.btn:hover {
+   border-color: #000;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sleuth Game - Single Player</title>
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+   <!-- favicon -->
+   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+   <!-- styles -->
+   <link rel="stylesheet" href="style/styles.css">
+</head>
+
+<body>
+   <h1 id="main-title">Sleuth Game</h1>
+   
+   <div class="main_container">
+      <button id="go_back_btn">GoBack</button>
+
+      <button id="start_btn">Start</button>
+
+      <div class="players_container">
+
+         <h1 id="player_one">Points: <span class="player_points">0pt</span></h1>
+
+      </div>
+
+      <div class="board">
+
+         <div class="row">
+            <div id="button_1" class="btn"></div>
+            <div id="button_2" class="btn"></div>
+         </div>
+
+         <div class="row">
+            <div id="button_3" class="btn"></div>
+            <div id="button_4" class="btn"></div>
+         </div>
+
+      </div>
+   </div>
+
+   <footer>
+      Made by <span class="big_text">Fitim Bytyqi</span> &copy; 2020
+   </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="js/singlePlayer.js"></script>
+</body>
+
+</html>

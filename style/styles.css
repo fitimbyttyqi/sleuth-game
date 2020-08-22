@@ -1,0 +1,75 @@
+body {
+   background-color: rgb(155, 50, 50);
+   font-family: 'Pacifico',
+      cursive;
+   text-align: center;
+   color: #fff;
+}
+
+::selection {
+   color: aqua;
+}
+
+#start_btn,
+#go_back_btn {
+   outline: none;
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: #fff;
+   background-color: #27adad;
+   border: 0;
+   border-radius: 5px;
+   padding: 10px 100px;
+   cursor: pointer;
+}
+
+#start_btn:hover {
+   opacity: .9;
+}
+
+#start_btn:active {
+   box-shadow: 1px 5px 3px #000;
+   transform: scale(0.9);
+}
+
+.main_container {
+   margin: 5% 0;
+}
+
+.big_text {
+   font-size: 2rem;
+}
+
+
+.players_container,
+.score_container {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 20px;
+}
+
+.player_highlight {
+   border-bottom: 1px solid #fff;
+   color: #000;
+}
+
+.winner_flag_p1,
+.winner_flag_p2 {
+   display: none;
+}
+
+.winner_color {
+   color: aqua;
+}
+
+.btn {
+   width: 300px;
+   height: 100px;
+   display: inline-block;
+   cursor: pointer;
+}
+
+.btn:hover {
+   box-shadow: inset 0 0 2px #000;
+}
