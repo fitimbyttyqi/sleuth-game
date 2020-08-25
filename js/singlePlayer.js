@@ -31,9 +31,9 @@ function setBoard() {
    $("#button_3").css("backgroundColor", color);
    $("#button_4").css("backgroundColor", color);
 
-   R += 8;
-   G += 8;
-   B += 8;
+   R += 30;
+   G += 30;
+   B += 30;
 
    let diffColor = "rgb(" + R + "," + G + "," + B + ")";
    randomButtonID = "button_" + (Math.floor(Math.random() * 4) + 1);
