@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sleuth Game - Single Player</title>
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+   <!-- favicon -->
+   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+
+   <!-- bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+   <!-- styles -->
+   <link rel="stylesheet" href="../style/styles.css">
+
+</head>
+
+<body>
+
+   <div class="container">
+
+      <div class="button_container">
+         <button id="goback_btn" class="btn btn-outline-light p-4 w-50">Back</button>
+
+         <button id="start_btn" class="btn btn-outline-light p-4 w-50">Start</button>
+      </div>
+
+
+      <h3 class="m-3">Points: <span class="player_points">0</span>pt <span id="sign"></span></h3>
+
+      <h3 id="winner"></h3>
+
+      <div class="board">
+
+         <div class="board-row">
+
+            <div id="button_1" class="btn_costum btn btn-lg"></div>
+            <div id="button_2" class="btn_costum btn btn-lg"></div>
+
+         </div>
+
+         <div class="board-row">
+
+            <div id="button_3" class="btn_costum btn btn-lg"></div>
+            <div id="button_4" class="btn_costum btn btn-lg"></div>
+
+         </div>
+
+      </div>
+
+
+      <footer class="h5 p-5">
+         Made by <span class="h4">Fitim Bytyqi</span> &copy; 2020
+      </footer>
+
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="../js/singlePlayer.js"></script>
+   <noscript>Your browser doesn't support javascript at the moment, try enabling it via settings!</noscript>
+</body>
+
+</html>

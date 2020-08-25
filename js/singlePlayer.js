@@ -1,16 +1,16 @@
 let playerScore = 0;
+let missCounter = 0;
+
 let randomButtonID;
+let sound = new Audio("../sounds/sound.mp3");
 
 $(".board").css("visibility", "hidden");
 
-$("#start_btn").on("click", function () {
-   startGame();
-});
+$("#start_btn").on("click", startGame);
 
 function startGame() {
-   setTimeout(function () {
-      $("#start_btn").fadeOut();
-   }, 500);
+
+   $("#start_btn").fadeOut(500).fadeIn(500).text("Restart!");
 
    $(".board").css("visibility", "visible");
 
@@ -20,7 +20,6 @@ function startGame() {
 }
 
 function setBoard() {
-   $(".board").fadeIn();
 
    let R = Math.floor(Math.random() * 235);
    let G = Math.floor(Math.random() * 235);
@@ -32,68 +31,74 @@ function setBoard() {
    $("#button_3").css("backgroundColor", color);
    $("#button_4").css("backgroundColor", color);
 
-   R += 3;
-   G += 3;
-   B += 3;
+   R += 4;
+   G += 4;
+   B += 4;
 
    let diffColor = "rgb(" + R + "," + G + "," + B + ")";
    randomButtonID = "button_" + (Math.floor(Math.random() * 4) + 1);
    $("#" + randomButtonID).css("backgroundColor", diffColor);
+
 }
 
 function checkCorrect(buttonID) {
+   $("#start_btn").click(function () {
+      startOver();
+   });
    if (buttonID == randomButtonID) {
+      missCounter = 0;
       updateScoreBy(50);
+      $("#sign").text("+");
+      $("#sign").css("color", "green");
    } else {
-      gameOver();
+      if (missCounter > 0) {
+         gameOver();
+      } else {
+         missCounter++;
+         $("#sign").text("- you've been give another chance, don't miss it!");
+         $("#sign").css("color", "red");
+      }
    }
    checkWinner();
    setBoard();
 }
 
 function checkWinner() {
-   if (playerScore >= 1000) {
+   if (playerScore == 1000) {
       $(".board").css("visibility", "hidden");
-      $("#player_one").addClass("winner_color");
-      $("#player_one").text("🚩You Won!🚩");
-
-      setTimeout(function () {
-         $("#start_btn").fadeIn();
-         $("#start_btn").text("Restart!");
-         $("#start_btn").click(function () {
-            startOver();
-         });
-      }, 1000);
+      $("#winner").addClass("winner_color");
+      $("#winner").text("🚩You Won!🚩");
+      $("#sign").empty();
+      $("#start_btn").click(function () {
+         startOver();
+      });
    }
 }
 
 function updateScoreBy(score) {
    playerScore += score;
-   $(".player_points").text(playerScore + "pt");
+   $(".player_points").text(playerScore);
 }
 
 function startOver() {
    playerScore = 0;
-   $(".winner_flag_p1").css("display", "none");
-   $("#player_one").text("Points: " + playerScore + "pt");
-   $("#player_one").removeClass("winner_color");
+   missCounter = 0;
+   $(".player_points").text(playerScore);
+   $("#sign").empty();
+   $("#winner").empty();
+   $("#winner").removeClass("winner_color looser_color");
    setBoard();
-   checkWinner();
 }
 
 function gameOver() {
-   $("#player_one").text("You Lost :), better luck next time");
-
+   $("#winner").addClass("looser_color");
+   $("#winner").text("You lost :(, better luck next time!");
+   $("#sign").empty();
    $(".board").css("visibility", "hidden");
-   setTimeout(function () {
-      $("#start_btn").fadeIn();
-      $("#start_btn").text("Restart!");
-      $("#start_btn").click(function () {
-         startOver();
-      });
-   }, 1000);
+   $("#start_btn").click(function () {
+      startOver();
+   });
 }
-
 
 $("#button_1").click(function () {
    checkCorrect("button_1");
@@ -111,6 +116,13 @@ $("#button_4").click(function () {
    checkCorrect("button_4");
 });
 
-$("#go_back_btn").click(function () {
-   window.location.href = 'index.html';
+$("#goback_btn").on("click", function () {
+   sound.play();
+   setTimeout(function () {
+      window.open("../index.html", "_self");
+   }, 300);
+});
+
+$("#start_btn").on("click", function () {
+   sound.play();
 });

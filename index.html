@@ -12,32 +12,63 @@
    <!-- favicon -->
    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
+   <!-- bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
    <!-- styles -->
    <link rel="stylesheet" href="style/styles.css">
-   <link rel="stylesheet" href="style/index.css">
+
 </head>
 
 <body>
-   <h1 id="main-title">Sleuth Game</h1>
 
-   <a href="singlePlayer.html">
-      <div id="button_1" class="btn">
-         <h2>Single Player</h2>
+   <div class="container-fluid text-center">
+
+      <h1 class="main-title">Sleuth Game</h1>
+
+      <div class="row">
+
+         <div class="col-md-6 col-sm-12">
+            <button id="button_1" class="btn btn-outline-light btn-lg m-5 p-5 w-75">
+               Single Player
+            </button>
+         </div>
+
+         <div class="col-md-6 col-sm-12">
+            <button id="button_2" class="btn btn-outline-light m-5 p-5 w-75">
+               Multi Player
+            </button>
+         </div>
+
       </div>
-   </a>
 
-   <a href="multiPlayer.html">
+      <footer class="h5 pt-5">
+         Made by <span class="h4">Fitim Bytyqi</span> &copy; 2020
+      </footer>
 
-      <div id="button_2" class="btn">
-         <h2>Multi Player</h2>
-      </div>
+   </div>
 
-   </a>
+   <script>
+      let sound = new Audio("sounds/sound.mp3");
 
-   <footer>
-      Made by <span class="big_text">Fitim Bytyqi</span> &copy; 2020
-   </footer>
+      document.querySelectorAll(".btn")[0].addEventListener("click", function () {
+         sound.play();
+         setTimeout(function () {
+            window.open("public/singlePlayer.html", "_self");
+         }, 300);
+      });
 
+      document.querySelectorAll(".btn")[1].addEventListener("click", function () {
+         sound.play();
+         setTimeout(function () {
+            window.open("public/multiPlayer.html", "_self");
+         }, 300);
+
+      });
+   </script>
+
+   <noscript>Your browser doesn't support javascript at the moment, try enabling it via settings!</noscript>
 </body>
 
 </html>

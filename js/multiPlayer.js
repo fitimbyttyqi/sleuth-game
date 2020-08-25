@@ -5,18 +5,21 @@ let hasWinner = false;
 let currentPlayer;
 let randomButtonID;
 
+let sound = new Audio("../sounds/sound.mp3");
+
 $(".board").css("visibility", "hidden");
 
-$("#start_btn").on("click", function () {
-   startGame();
+$("#start_btn").on("click", startGame);
+
+function startGame() {
+
+   $("#start_btn").fadeOut(500).fadeIn(500).text("Restart!");
+
+   $(".board").css("visibility", "visible");
 
    setTimeout(function () {
       setBoard();
-   }, 1000);
-});
-
-function startGame() {
-   $(".board").css("visibility", "visible");
+   }, 500);
 
    currentPlayer = Math.floor(Math.random() * 2) + 1;
 
@@ -25,16 +28,9 @@ function startGame() {
    } else {
       $("#player_two").addClass("player_highlight");
    }
-
-   setTimeout(function () {
-      $("#start_btn").fadeOut();
-   }, 500);
-
 }
 
 function setBoard() {
-
-   $(".board").fadeIn();
 
    let R = Math.floor(Math.random() * 235);
    let G = Math.floor(Math.random() * 235);
@@ -69,21 +65,16 @@ function checkCorrect(buttonID) {
 }
 
 function checkWinner() {
-   if (p1Score == 10) {
+   if (p1Score == 5) {
       $(".board").css("visibility", "hidden");
       $(".winner_flag_p1").css("display", "inline");
       $("#player_one").addClass("winner_color");
       $("#player_two").removeClass("player_highlight");
       hasWinner = true;
-
-      setTimeout(function () {
-         $("#start_btn").fadeIn();
-         $("#start_btn").text("Restart!");
-         $("#start_btn").click(function () {
-            startOver();
-         });
-      }, 1000);
-   } else if (p2Score == 10) {
+      $("#start_btn").click(function () {
+         startOver();
+      });
+   } else if (p2Score == 5) {
       $(".board").css("visibility", "hidden");
       $(".winner_flag_p2").css("display", "inline");
       $("#player_two").addClass("winner_color");
@@ -97,7 +88,12 @@ function checkWinner() {
             startOver();
          });
       }, 1000);
+
    }
+
+   $("#start_btn").click(function () {
+      startOver();
+   });
 }
 
 function updateScoreBy(score) {
@@ -163,6 +159,13 @@ $("#button_4").click(function () {
    checkCorrect("button_4");
 });
 
-$("#go_back_btn").click(function () {
-   window.location.href = 'index.html';
+$("#goback_btn").on("click", function () {
+   sound.play();
+   setTimeout(function () {
+      window.open("../index.html", "_self");
+   }, 300);
+});
+
+$("#start_btn").on("click", function () {
+   sound.play();
 });
